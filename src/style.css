@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: whitesmoke;
+}
+
+.todo-container {
+  box-shadow: 10px 15xp;
+  background: white;
+  border-radius: 2%;
+  margin-left: 34%;
+  margin-top: 5%;
+  width: 450px;
+  height: 450px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: auto 15px;
+  font-weight: 500;
+}
+
+.header .fas {
+  margin-top: 25px;
+}
+
+.header h1 {
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  border: transparent;
+  border-bottom: 1px solid grey;
+  margin: auto 10px;
+  font-style: italic;
+  padding: 10px;
+}
+
+form button {
+  margin-top: 75%;
+  border: none;
+  padding: 14px;
+  color: lightgray;
+}
+
+form button:hover {
+  color: grey;
+  text-decoration: underline;
+  cursor: pointer;
+}
+

@@ -1,12 +1,19 @@
-import _ from 'lodash';
+// import _ from 'lodash';
+import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+// Queries to HTML
+const section = document.querySelector('section');
+const inputText = document.querySelector('input');
+const todoMainContainer = document.querySelector('.todos-container');
+const ClearBtn = document.querySelector('button');
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
+class MyObjects {
+  constructor(description, completed, index) {
+    this.description = description;
+    this.completed = completed;
+    this.index = index;
+  }
 }
 
-document.body.appendChild(component());
+const myArray = [];
+const todosContainer = document.querySelector
