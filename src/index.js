@@ -1,11 +1,12 @@
 // import _ from 'lodash';
+
 import './style.css';
 
 // Queries to HTML
-const section = document.querySelector('section');
+// const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
-const ClearBtn = document.querySelector('button');
+// const ClearBtn = document.querySelector('button');
 
 // class object
 class MyObjects {
@@ -52,6 +53,8 @@ const addTodo = (todoValue) => {
     });
   });
 };
+
+/* eslint-disable no-unused-vars */
 
 const editTodo = (todoContainer, todo) => {
   const editInput = document.createElement('input');
