@@ -49,7 +49,7 @@ const addTodo = (todoValue) => {
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
-      addTodo(todoContainer, i.previousElementSibling);
+      // addTodo(todoContainer, i.previousElementSibling);
     });
   });
 };
