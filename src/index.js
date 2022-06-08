@@ -54,8 +54,6 @@ const addTodo = (todoValue) => {
   });
 };
 
-/* eslint-disable no-unused-vars */
-
 const editTodo = (todoContainer, todo) => {
   const editInput = document.createElement('input');
   editInput.type = 'text';
