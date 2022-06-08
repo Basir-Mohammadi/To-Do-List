@@ -40,6 +40,7 @@ const addTodo = (todoValue) => {
     });
   });
 
+  // Objects
   const object = new MyObjects(todoValue, false, checkbox.length - 1);
   myArray.push(object);
   localStorage.setItem('list', JSON.stringify(myArray));
@@ -47,7 +48,7 @@ const addTodo = (todoValue) => {
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
-      addTodo();
+      addTodo(todoContainer, i.previousElementSibling);
     });
   });
 };
@@ -63,8 +64,14 @@ const editTodo = (todoContainer, todo) => {
       const todoContainers = document.querySelectorAll('.todoContainer');
       const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
       for (let i = 0; i < todoContainers.length; i += 1) {
-        
+        if (todoContainer[i].classList.contains('checkedContainer')) {
+          DataFromLocalStorage[i].description = editInput.value;
+          localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
+        }
       }
+      editInput.parentElement.classList.remove('checkedContainer');
+      todoContainer.replaceChild(todo, editTodo);
+      todo.textContent = editInput.value;
     }
   });
 };
