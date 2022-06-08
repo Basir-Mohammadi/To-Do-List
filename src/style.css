@@ -4,17 +4,25 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: whitesmoke;
+    background-color: lightgrey;
 }
 
-.todo-container {
-  box-shadow: 10px 15xp;
-  background: white;
-  border-radius: 2%;
-  margin-left: 34%;
-  margin-top: 5%;
-  width: 450px;
-  height: 450px;
+section {
+  box-shadow: 1px 6px 17px -1px rgba(34, 60, 80, 0.19);
+  width: 40vw;
+  font-family: Poppins, serif;
+  font-size: 18px;
+  background-color: #fff;
+  margin-left: 28%;
+  margin-top: 10%;
+}
+
+.todoContainer {
+  margin: 10px 15px;
+}
+
+i {
+  float: right;
 }
 
 .header {
@@ -24,7 +32,7 @@ body {
   font-weight: 500;
 }
 
-.header .fas {
+.header .fa-sync {
   margin-top: 25px;
 }
 
@@ -46,7 +54,6 @@ form input {
 }
 
 form button {
-  margin-top: 75%;
   border: none;
   padding: 14px;
   color: lightgray;
@@ -56,5 +63,9 @@ form button:hover {
   color: grey;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.fa-trash-alt {
+  display: none;
 }
 
