@@ -505,5 +505,6 @@
     "yaml": "^1.10.2",
     "yargs-parser": "^20.2.9",
     "zwitch": "^1.0.5"
-  }
+  },
+  "main": "webpack.config.js"
 }
