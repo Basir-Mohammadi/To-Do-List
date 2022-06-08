@@ -54,28 +54,28 @@ const addTodo = (todoValue) => {
   });
 };
 
-// const editTodo = (todoContainer, todo) => {
-//   const editInput = document.createElement('input');
-//   editInput.type = 'text';
-//   editInput.classList = 'editInput';
-//   editInput.value = todo.textContent;
-//   todoContainer.replaceChild(editTodo, todo);
-//   editInput.addEventListener('keypress', (e) => {
-//     if (e.key === 'Enter') {
-//       const todoContainers = document.querySelectorAll('.todoContainer');
-//       const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-//       for (let i = 0; i < todoContainers.length; i += 1) {
-//         if (todoContainer[i].classList.contains('checkedContainer')) {
-//           DataFromLocalStorage[i].description = editInput.value;
-//           localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
-//         }
-//       }
-//       editInput.parentElement.classList.remove('checkedContainer');
-//       todoContainer.replaceChild(todo, editTodo);
-//       todo.textContent = editInput.value;
-//     }
-//   });
-// };
+const editTodo = (todoContainer, todo) => {
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.classList = 'editInput';
+  editInput.value = todo.textContent;
+  todoContainer.replaceChild(editTodo, todo);
+  editInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const todoContainers = document.querySelectorAll('.todoContainer');
+      const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
+      for (let i = 0; i < todoContainers.length; i += 1) {
+        if (todoContainer[i].classList.contains('checkedContainer')) {
+          DataFromLocalStorage[i].description = editInput.value;
+          localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
+        }
+      }
+      editInput.parentElement.classList.remove('checkedContainer');
+      todoContainer.replaceChild(todo, editTodo);
+      todo.textContent = editInput.value;
+    }
+  });
+};
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
