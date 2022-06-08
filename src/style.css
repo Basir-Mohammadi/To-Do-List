@@ -19,6 +19,8 @@ section {
 
 .todoContainer {
   margin: 10px 15px;
+  padding: 30px 10px;
+  border-bottom: 1px solid lightgrey;
 }
 
 i {
@@ -67,5 +69,21 @@ form button:hover {
 
 .fa-trash-alt {
   display: none;
+}
+
+.trash-active {
+  display: block;
+}
+
+.edited-disable {
+  display: none;
+}
+
+.checkedContainer {
+  background-color: rgb(250, 237, 220);
+}
+
+.checkToDo {
+  text-decoration: line-through;
 }
 
