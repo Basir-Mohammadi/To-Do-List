@@ -22,10 +22,10 @@ const removeTodo = (todo) => {
   todoMainContainer.removeChild(todo);
   let count = 0;
   const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
+  function complete(i) { i.completed = false };
   const data = Array.from(DataFromLocalStorage).filter(complete);
-  function complete(i) {i.completed = false}
+  function counts(i) { i.index = count += 1 };
   data.map(counts);
-  function counts(i) {i.index = count += 1}
   localStorage.setItem(('list'), JSON.stringify(data));
 };
 
