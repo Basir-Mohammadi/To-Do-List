@@ -3,10 +3,10 @@
 import './style.css';
 
 // Queries to HTML
-// const section = document.querySelector('section');
+const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
-// const ClearBtn = document.querySelector('button');
+const ClearBtn = document.querySelector('button');
 
 // class object
 class MyObjects {
@@ -49,33 +49,51 @@ const addTodo = (todoValue) => {
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
-      // addTodo(todoContainer, i.previousElementSibling);
+      editTodo(todoContainer, i.previousElementSibling);
     });
   });
+
+  const removeIcons = document.querySelectorAll('.fa-trash-alt');
+  removeIcons.forEach((i) => {
+    i.addEventListener('click', ()=> {
+      removeTodo(i.parentElement);
+    })
+  })
 };
 
-// const editTodo = (todoContainer, todo) => {
-//   const editInput = document.createElement('input');
-//   editInput.type = 'text';
-//   editInput.classList = 'editInput';
-//   editInput.value = todo.textContent;
-//   todoContainer.replaceChild(editTodo, todo);
-//   editInput.addEventListener('keypress', (e) => {
-//     if (e.key === 'Enter') {
-//       const todoContainers = document.querySelectorAll('.todoContainer');
-//       const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-//       for (let i = 0; i < todoContainers.length; i += 1) {
-//         if (todoContainer[i].classList.contains('checkedContainer')) {
-//           DataFromLocalStorage[i].description = editInput.value;
-//           localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
-//         }
-//       }
-//       editInput.parentElement.classList.remove('checkedContainer');
-//       todoContainer.replaceChild(todo, editTodo);
-//       todo.textContent = editInput.value;
-//     }
-//   });
-// };
+// remove todo function
+const removeTodo = (todo) => {
+  todoMainContainer.removeChild(todo);
+  let count = 0;
+  const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
+  const data = Array.from(DataFromLocalStorage).filter(i => i.completed = false);
+  data.map(i => i.index = count +=1);
+  localStorage.setItem(('list'), JSON.stringify(data));
+}
+
+// edit todo function
+const editTodo = (todoContainer, todo) => {
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.classList = 'editInput';
+  editInput.value = todo.textContent;
+  todoContainer.replaceChild(editInput, todo);
+  editInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const todoContainers = document.querySelectorAll('.todoContainer');
+      const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
+      for (let i = 0; i < todoContainers.length; i += 1) {
+        if (todoContainers[i].classList.contains('checkedContainer')) {
+          DataFromLocalStorage[i].description = editInput.value;
+          localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
+        }
+      }
+      editInput.parentElement.classList.remove('checkedContainer');
+      todoContainer.replaceChild(todo, editInput);
+      todo.textContent = editInput.value;
+    }
+  });
+};
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
