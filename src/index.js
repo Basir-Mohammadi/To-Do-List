@@ -23,9 +23,9 @@ const removeTodo = (todo) => {
   let count = 0;
   const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
   const data = Array.from(DataFromLocalStorage).filter((i) => {
-    i.completed = false});
-  data.map((i) =>{
-    i.index = count += 1;
+    return i.completed = false});
+  data.map((i) => {
+    return i.index = count += 1;
   });
   localStorage.setItem(('list'), JSON.stringify(data));
 };
