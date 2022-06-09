@@ -20,12 +20,12 @@ class MyObjects {
 // remove todo function
 const removeTodo = (todo) => {
   todoMainContainer.removeChild(todo);
-  const count = 0;
+  // let count = 0;
   const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
   function complete(i) { i.completed = false; }
   const data = Array.from(DataFromLocalStorage).filter(complete);
-  function counts(i) { i = count + 1; }
-  data.map(counts);
+  // function counts(i) { i.index = count += 1; }
+  // data.map(counts);
   localStorage.setItem(('list'), JSON.stringify(data));
 };
 
