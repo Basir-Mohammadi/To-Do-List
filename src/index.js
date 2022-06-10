@@ -1,12 +1,15 @@
 // import _ from 'lodash';
-
+import {editTodo} from "./functionalities.js";
+import {removeTodo} from "./functionalities.js";
+import {getFromLocal} from "./ToDoStatus.js";
+import {updateLocalStorage} from "./ToDoStatus.js";
 import './style.css';
 
 // Queries to HTML
 // const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
-// const ClearBtn = document.querySelector('button');
+const ClearBtn = document.querySelector('button');
 
 // class object
 class MyObjects {
@@ -17,50 +20,14 @@ class MyObjects {
   }
 }
 
-// remove todo function
-const removeTodo = (todo) => {
-  todoMainContainer.removeChild(todo);
-  // let count = 0;
-  const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-  function complete(i) { i.completed = false; }
-  const data = Array.from(DataFromLocalStorage).filter(complete);
-  // function counts(i) { i.index = count += 1; }
-  // data.map(counts);
-  localStorage.setItem(('list'), JSON.stringify(data));
-};
-
-// edit todo function
-const editTodo = (todoContainer, todo) => {
-  const editInput = document.createElement('input');
-  editInput.type = 'text';
-  editInput.classList = 'editInput';
-  editInput.value = todo.textContent;
-  todoContainer.replaceChild(editInput, todo);
-  editInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const todoContainers = document.querySelectorAll('.todoContainer');
-      const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-      for (let i = 0; i < todoContainers.length; i += 1) {
-        if (todoContainers[i].classList.contains('checkedContainer')) {
-          DataFromLocalStorage[i].description = editInput.value;
-          localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
-        }
-      }
-      editInput.parentElement.classList.remove('checkedContainer');
-      todoContainer.replaceChild(todo, editInput);
-      todo.textContent = editInput.value;
-    }
-  });
-};
-
 // Array of Objects
-const myArray = [];
+export const myArray = [];
 
 // Add Methods
 const addTodo = (todoValue) => {
   const todoContainer = document.createElement('div');
   todoContainer.className = 'todoContainer';
-  todoContainer.innerHTML = `
+  todoContainer.innerHTML += `
     <input type='checkbox' class='checkbox'>
     <span>${todoValue}</span>
     <i class='fas fa-ellipsis-v'></i>
@@ -74,6 +41,7 @@ const addTodo = (todoValue) => {
       i.nextElementSibling.classList.toggle('checkToDo');
       i.parentElement.lastElementChild.classList.toggle('trash-active');
       i.parentElement.lastElementChild.previousElementSibling.classList.toggle('edited-disable');
+      updateLocalStorage();
     });
   });
 
@@ -86,6 +54,7 @@ const addTodo = (todoValue) => {
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
       editTodo(todoContainer, i.previousElementSibling);
+      i.parentElement.classList.add('checkedContainer')
     });
   });
 
@@ -99,8 +68,27 @@ const addTodo = (todoValue) => {
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
-    e.preventDefault();
+    // e.preventDefault();
     addTodo(inputText.value);
     inputText.value = null;
   }
 });
+
+window.addEventListener('load', getFromLocal);
+// getFromLocal();
+
+// Clear all function
+const ClearAllBtn = () => {
+  const localData = JSON.parse(localStorage.getItem('list'));
+  const todoContainer = document.querySelectorAll('.todoContainer');
+  todoContainer.forEach((i) => {
+    if (i.classList.contains('checkedContainer')){
+      removeTodo(i);
+    }
+  })
+  let count =0;
+  const data = Array.from(localData).filter((i) => i.completed === false);
+  data.map((i) => i.index = count +=1);
+  localStorage.setItem('list', JSON.stringify(data));
+}
+ClearBtn.addEventListener('click', ClearAllBtn);
