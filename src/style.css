@@ -17,6 +17,11 @@ section {
   margin-top: 10%;
 }
 
+.todos-Container {
+  display: flex;
+  flex-direction: column;
+}
+
 .todoContainer {
   margin: 10px 15px;
   padding: 30px 10px;

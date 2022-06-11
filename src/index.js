@@ -1,12 +1,12 @@
-// import _ from 'lodash';
-
+import { editTodo, removeTodo } from './functionalities';
+import { getFromLocal, updateLocalStorage } from './ToDoStatus';// eslint-disable-line
 import './style.css';
 
 // Queries to HTML
 // const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
-// const ClearBtn = document.querySelector('button');
+const ClearBtn = document.querySelector('button');
 
 // class object
 class MyObjects {
@@ -18,13 +18,13 @@ class MyObjects {
 }
 
 // Array of Objects
-const myArray = [];
+export const myArray = [];
 
 // Add Methods
 const addTodo = (todoValue) => {
   const todoContainer = document.createElement('div');
   todoContainer.className = 'todoContainer';
-  todoContainer.innerHTML = `
+  todoContainer.innerHTML += `
     <input type='checkbox' class='checkbox'>
     <span>${todoValue}</span>
     <i class='fas fa-ellipsis-v'></i>
@@ -38,6 +38,7 @@ const addTodo = (todoValue) => {
       i.nextElementSibling.classList.toggle('checkToDo');
       i.parentElement.lastElementChild.classList.toggle('trash-active');
       i.parentElement.lastElementChild.previousElementSibling.classList.toggle('edited-disable');
+      updateLocalStorage();
     });
   });
 
@@ -49,33 +50,18 @@ const addTodo = (todoValue) => {
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
-      // addTodo(todoContainer, i.previousElementSibling);
+      editTodo(todoContainer, i.previousElementSibling);
+      i.parentElement.classList.add('checkedContainer');
+    });
+  });
+
+  const removeIcons = document.querySelectorAll('.fa-trash-alt');
+  removeIcons.forEach((i) => {
+    i.addEventListener('click', () => {
+      removeTodo(i.parentElement);
     });
   });
 };
-
-// const editTodo = (todoContainer, todo) => {
-//   const editInput = document.createElement('input');
-//   editInput.type = 'text';
-//   editInput.classList = 'editInput';
-//   editInput.value = todo.textContent;
-//   todoContainer.replaceChild(editTodo, todo);
-//   editInput.addEventListener('keypress', (e) => {
-//     if (e.key === 'Enter') {
-//       const todoContainers = document.querySelectorAll('.todoContainer');
-//       const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-//       for (let i = 0; i < todoContainers.length; i += 1) {
-//         if (todoContainer[i].classList.contains('checkedContainer')) {
-//           DataFromLocalStorage[i].description = editInput.value;
-//           localStorage.setItem('list', JSON.stringify(DataFromLocalStorage));
-//         }
-//       }
-//       editInput.parentElement.classList.remove('checkedContainer');
-//       todoContainer.replaceChild(todo, editTodo);
-//       todo.textContent = editInput.value;
-//     }
-//   });
-// };
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
@@ -84,3 +70,22 @@ inputText.addEventListener('keypress', (e) => {
     inputText.value = null;
   }
 });
+
+window.addEventListener('load', getFromLocal);
+// getFromLocal();
+
+// Clear all function
+const ClearAllBtn = () => {
+  const localData = JSON.parse(localStorage.getItem('list'));
+  const todoContainer = document.querySelectorAll('.todoContainer');
+  todoContainer.forEach((i) => {
+    if (i.classList.contains('checkedContainer')) {
+      removeTodo(i);
+    }
+  });
+  let count = 0;
+  const data = Array.from(localData).filter(i => i.completed === false);// eslint-disable-line
+  data.map(i => i.index = count += 1); // eslint-disable-line
+  localStorage.setItem('list', JSON.stringify(data));
+};
+ClearBtn.addEventListener('click', ClearAllBtn);

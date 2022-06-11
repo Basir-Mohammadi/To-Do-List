@@ -1,5 +1,6 @@
 # To-Do-List
 
+
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 > This is a website that allows users to add/remove todayy's todo from a list. This project is build using JavaScript objects and arrays.
@@ -53,3 +54,6 @@ Give a ⭐️ to if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
+
+
+
