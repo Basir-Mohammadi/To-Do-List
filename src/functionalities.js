@@ -23,13 +23,12 @@ export const editTodo = (todoContainer, todo) => {
   });
 };
 
-  // remove todo function
+// remove todo function
 export const removeTodo = (todo) => {
   todoMainContainer.removeChild(todo);
   let count = 0;
   const DataFromLocalStorage = JSON.parse(localStorage.getItem('list'));
-  const data = Array.from(DataFromLocalStorage).filter(i => i.completed === false);
-  data.map(i => i.index =count += 1); // eslint-disable-line
+  const data = Array.from(DataFromLocalStorage).filter((i) => i.completed === false);
+  data.map((i) => i.index =count += 1); // eslint-disable-line
   localStorage.setItem(('list'), JSON.stringify(data));
 };
-  

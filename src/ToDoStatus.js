@@ -1,5 +1,5 @@
-import { editTodo, removeTodo } from "./functionalities";
-import { myArray } from "./index.js";
+import { editTodo, removeTodo } from './functionalities';
+import { myArray } from './index.js';
 const todoMainContainer = document.querySelector('.todos-container');
 
 // get from localstorage function
@@ -20,11 +20,25 @@ const getFromLocal = () => {
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
   EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
-      editTodo(todoContainer, i.previousElementSibling);
-      i.parentElement.classList.add('checkedContainer')
+        editTodo(todoContainer, i.previousElementSibling);
+        i.parentElement.classList.add('checkedContainer');
+      });
     });
   });
-  })
+
+  // Update local Storage
+const updateLocalStorage = () => {
+  const localData = JSON.parse(localStorage.getItem('list'));
+  const todos = document.querySelectorAll('span');
+  for (let i = 0; i < todos.length; i += 1) {
+    if (todos[i].classList.contains('checkToDo')) {
+      localData[i].completed = true;
+    } else {
+      localData[i].completed = false;
+    }
+  }
+  localStorage.setItem('list', JSON.stringify(localData));
+};
 
   const checkbox = document.querySelectorAll('.checkbox');
   checkbox.forEach((i) => {
@@ -37,26 +51,13 @@ const getFromLocal = () => {
     });
   });
 
-const removeIcons = document.querySelectorAll('.fa-trash-alt');
-removeIcons.forEach((i) => {
-  i.addEventListener('click', () => {
-    removeTodo(i.parentElement);
+  const removeIcons = document.querySelectorAll('.fa-trash-alt');
+  removeIcons.forEach((i) => {
+    i.addEventListener('click', () => {
+      removeTodo(i.parentElement);
+    });
   });
-});
   localStorage.setItem('list', JSON.stringify(myArray));
-}
-
-// Update local Storage
-const updateLocalStorage = () => {
-  const localData = JSON.parse(localStorage.getItem('list'));
-  const todos = document.querySelectorAll('span');
-  for(let i = 0; i < todos.length; i +=1) {
-    if(todos[i].classList.contains('checkToDo')) {
-      localData[i].completed = true;
-    } else {
-      localData[i].completed = false;
-    }
-  }
-  localStorage.setItem('list', JSON.stringify(localData));
 };
-export {getFromLocal, updateLocalStorage};
+
+export { getFromLocal, updateLocalStorage };
