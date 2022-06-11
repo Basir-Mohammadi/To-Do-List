@@ -1,5 +1,5 @@
 import { editTodo, removeTodo } from './functionalities';
-import { myArray } from './index.js';
+import { myArray } from './index';
 const todoMainContainer = document.querySelector('.todos-container');
 
 // get from localstorage function
@@ -17,7 +17,7 @@ const getFromLocal = () => {
     `;
     todoMainContainer.appendChild(todoContainer);
 
-    EditIcons = document.querySelectorAll('.fa-ellipsis-v');
+    const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
     EditIcons.forEach((i) => {
       i.addEventListener('click', () => {
         editTodo(todoContainer, i.previousElementSibling);
@@ -33,7 +33,7 @@ const getFromLocal = () => {
       i.nextElementSibling.classList.toggle('checkToDo');
       i.parentElement.lastElementChild.classList.toggle('trash-active');
       i.parentElement.lastElementChild.previousElementSibling.classList.toggle('edited-disable');
-      updateLocalStorage();
+      updateLocalStorage();// eslint-disable-line
     });
   });
 
