@@ -3,7 +3,6 @@ import { getFromLocal, updateLocalStorage } from './ToDoStatus';// eslint-disabl
 import './style.css';
 
 // Queries to HTML
-// const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
 const ClearBtn = document.querySelector('button');
@@ -65,14 +64,13 @@ const addTodo = (todoValue) => {
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
-    e.preventDefault();
+    // e.preventDefault();
     addTodo(inputText.value);
     inputText.value = null;
   }
 });
 
-window.addEventListener('load', getFromLocal);
-// getFromLocal();
+getFromLocal();
 
 // Clear all function
 const ClearAllBtn = () => {
@@ -85,7 +83,7 @@ const ClearAllBtn = () => {
   });
   let count = 0;
   const data = Array.from(localData).filter(i => i.completed === false);// eslint-disable-line
-  data.map(i => i.index = count += 1); // eslint-disable-line
+  data.map(i.index = count += 1); // eslint-disable-line
   localStorage.setItem('list', JSON.stringify(data));
 };
 ClearBtn.addEventListener('click', ClearAllBtn);
