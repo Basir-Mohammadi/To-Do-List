@@ -1,9 +1,8 @@
 import { editTodo, removeTodo } from './functionalities';
-import { getFromLocal, updateLocalStorage } from './ToDoStatus';
+import { getFromLocal, updateLocalStorage } from './ToDoStatus';// eslint-disable-line
 import './style.css';
 
 // Queries to HTML
-// const section = document.querySelector('section');
 const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
 const ClearBtn = document.querySelector('button');
