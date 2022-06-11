@@ -1,6 +1,5 @@
 # To-Do-List
-<<<<<<< HEAD
-=======
+
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
@@ -55,4 +54,6 @@ Give a ⭐️ to if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
->>>>>>> e3d2fc1bc7ae6b51de566bd8f905293643d13592
+
+
+
