@@ -7,7 +7,7 @@ const todoMainContainer = document.querySelector('.todos-container');
 export const getFromLocal = () => {
     const data = JSON.parse(localStorage.getItem('list'));
     data.map((i) => {
-      myArray.push[i];
+      myArray.push(i);
       const todoContainer = document.createElement('div');
       todoContainer.className = 'todoContainer';
       todoContainer.innerHTML += `

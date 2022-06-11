@@ -35,7 +35,7 @@ const addTodo = (todoValue) => {
   `;
   todoMainContainer.appendChild(todoContainer);
   const checkbox = document.querySelectorAll('.checkbox');
-  checkbox.forEach((i) => {
+  checkbox.forEach(i => {
     i.addEventListener('click', () => {
       i.parentElement.classList.toggle('checkedContainer');
       i.nextElementSibling.classList.toggle('checkToDo');
@@ -51,7 +51,7 @@ const addTodo = (todoValue) => {
   localStorage.setItem('list', JSON.stringify(myArray));
 
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
-  EditIcons.forEach((i) => {
+  EditIcons.forEach(i => {
     i.addEventListener('click', () => {
       editTodo(todoContainer, i.previousElementSibling);
       i.parentElement.classList.add('checkedContainer')
@@ -59,7 +59,7 @@ const addTodo = (todoValue) => {
   });
 
   const removeIcons = document.querySelectorAll('.fa-trash-alt');
-  removeIcons.forEach((i) => {
+  removeIcons.forEach(i => {
     i.addEventListener('click', () => {
       removeTodo(i.parentElement);
     });
@@ -68,7 +68,7 @@ const addTodo = (todoValue) => {
 
 inputText.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputText.value) {
-    // e.preventDefault();
+    e.preventDefault();
     addTodo(inputText.value);
     inputText.value = null;
   }
