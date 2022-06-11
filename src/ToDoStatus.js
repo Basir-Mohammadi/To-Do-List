@@ -1,11 +1,12 @@
 import { editTodo, removeTodo } from './functionalities';
-import { myArray } from './index';
+import { myArray } from './index';// eslint-disable-line
+
 const todoMainContainer = document.querySelector('.todos-container');
 
 // get from localstorage function
 const getFromLocal = () => {
   const data = JSON.parse(localStorage.getItem('list'));
-  data.map((i) => {
+  data.map((i) => {// eslint-disable-line
     myArray.push(i);
     const todoContainer = document.createElement('div');
     todoContainer.className = 'todoContainer';
