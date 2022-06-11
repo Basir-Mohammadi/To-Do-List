@@ -1,8 +1,8 @@
 // import _ from 'lodash';
-import { editTodo } from "./functionalities.js";
-import { removeTodo } from "./functionalities.js";
-import { getFromLocal } from "./ToDoStatus.js";
-import { updateLocalStorage } from "./ToDoStatus.js";
+import { editTodo, removeTodo } from './functionalities.js';
+// import { removeTodo } from './functionalities.js';
+import { getFromLocal, updateLocalStorage } from './ToDoStatus.js';
+// import { updateLocalStorage } from './ToDoStatus.js';
 import './style.css';
 
 // Queries to HTML
