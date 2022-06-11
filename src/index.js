@@ -1,5 +1,5 @@
 import { editTodo, removeTodo } from './functionalities';
-import { getFromLocal, updateLocalStorage } from './ToDoStatus';// eslint-disable-line
+import { getFromLocal, updateLocalStorage } from './ToDoStatus';
 import './style.css';
 
 // Queries to HTML
