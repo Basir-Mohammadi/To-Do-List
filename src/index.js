@@ -72,7 +72,6 @@ inputText.addEventListener('keypress', (e) => {
 });
 
 window.addEventListener('load', getFromLocal);
-// getFromLocal();
 
 // Clear all function
 const ClearAllBtn = () => {
