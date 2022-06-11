@@ -49,7 +49,6 @@ const getFromLocal = () => {
 
 // window.addEventListener('load', getFromLocal);
 
-
 // Update local Storage
 const updateLocalStorage = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
