@@ -1,8 +1,8 @@
 // import _ from 'lodash';
-import {editTodo} from "./functionalities.js";
-import {removeTodo} from "./functionalities.js";
-import {getFromLocal} from "./ToDoStatus.js";
-import {updateLocalStorage} from "./ToDoStatus.js";
+import { editTodo } from "./functionalities.js";
+import { removeTodo } from "./functionalities.js";
+import { getFromLocal } from "./ToDoStatus.js";
+import { updateLocalStorage } from "./ToDoStatus.js";
 import './style.css';
 
 // Queries to HTML
@@ -35,7 +35,7 @@ const addTodo = (todoValue) => {
   `;
   todoMainContainer.appendChild(todoContainer);
   const checkbox = document.querySelectorAll('.checkbox');
-  checkbox.forEach(i => {
+  checkbox.forEach((i) => {
     i.addEventListener('click', () => {
       i.parentElement.classList.toggle('checkedContainer');
       i.nextElementSibling.classList.toggle('checkToDo');
@@ -51,15 +51,15 @@ const addTodo = (todoValue) => {
   localStorage.setItem('list', JSON.stringify(myArray));
 
   const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
-  EditIcons.forEach(i => {
+  EditIcons.forEach((i) => {
     i.addEventListener('click', () => {
       editTodo(todoContainer, i.previousElementSibling);
-      i.parentElement.classList.add('checkedContainer')
+      i.parentElement.classList.add('checkedContainer');
     });
   });
 
   const removeIcons = document.querySelectorAll('.fa-trash-alt');
-  removeIcons.forEach(i => {
+  removeIcons.forEach((i) => {
     i.addEventListener('click', () => {
       removeTodo(i.parentElement);
     });
@@ -82,13 +82,13 @@ const ClearAllBtn = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
   const todoContainer = document.querySelectorAll('.todoContainer');
   todoContainer.forEach((i) => {
-    if (i.classList.contains('checkedContainer')){
+    if (i.classList.contains('checkedContainer')) {
       removeTodo(i);
     }
-  })
-  let count =0;
+  });
+  let count = 0;
   const data = Array.from(localData).filter((i) => i.completed === false);
-  data.map((i) => i.index = count +=1);
+  data.map((i) => i.index = count += 1); // eslint-disable-line
   localStorage.setItem('list', JSON.stringify(data));
-}
+};
 ClearBtn.addEventListener('click', ClearAllBtn);
