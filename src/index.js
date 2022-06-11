@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import { editTodo, removeTodo } from './functionalities';
 import { getFromLocal, updateLocalStorage } from './ToDoStatus';
 import './style.css';
