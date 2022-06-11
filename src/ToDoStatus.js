@@ -47,6 +47,9 @@ const getFromLocal = () => {
   localStorage.setItem('list', JSON.stringify(myArray));
 };
 
+// window.addEventListener('load', getFromLocal);
+
+
 // Update local Storage
 const updateLocalStorage = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
