@@ -84,8 +84,8 @@ const ClearAllBtn = () => {
     }
   });
   let count = 0;
-  const data = Array.from(localData).filter((i) => i.completed === false);
-  data.map((i) => i.index = count += 1); // eslint-disable-line
+  const data = Array.from(localData).filter(i => i.completed === false);// eslint-disable-line
+  data.map(i => i.index = count += 1); // eslint-disable-line
   localStorage.setItem('list', JSON.stringify(data));
 };
 ClearBtn.addEventListener('click', ClearAllBtn);

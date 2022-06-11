@@ -6,7 +6,7 @@ const todoMainContainer = document.querySelector('.todos-container');
 // get from localstorage function
 const getFromLocal = () => {
   const data = JSON.parse(localStorage.getItem('list'));
-  data.map((i) => {// eslint-disable-line
+  data.map(i => {// eslint-disable-line
     myArray.push(i);
     const todoContainer = document.createElement('div');
     todoContainer.className = 'todoContainer';
