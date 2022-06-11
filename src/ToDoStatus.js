@@ -2,20 +2,6 @@ import { editTodo, removeTodo } from './functionalities';
 import { myArray } from './index.js';
 const todoMainContainer = document.querySelector('.todos-container');
 
-// Update local Storage
-const updateLocalStorage = () => {
-  const localData = JSON.parse(localStorage.getItem('list'));
-  const todos = document.querySelectorAll('span');
-  for (let i = 0; i < todos.length; i += 1) {
-    if (todos[i].classList.contains('checkToDo')) {
-      localData[i].completed = true;
-    } else {
-      localData[i].completed = false;
-    }
-  }
-  localStorage.setItem('list', JSON.stringify(localData));
-};
-
 // get from localstorage function
 const getFromLocal = () => {
   const data = JSON.parse(localStorage.getItem('list'));
@@ -29,10 +15,10 @@ const getFromLocal = () => {
       <i class='fas fa-ellipsis-v'></i>
       <i class='fas fa-trash-alt'></i>
     `;
-  todoMainContainer.appendChild(todoContainer);
+    todoMainContainer.appendChild(todoContainer);
 
-  const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
-  EditIcons.forEach((i) => {
+    EditIcons = document.querySelectorAll('.fa-ellipsis-v');
+    EditIcons.forEach((i) => {
       i.addEventListener('click', () => {
         editTodo(todoContainer, i.previousElementSibling);
         i.parentElement.classList.add('checkedContainer');
@@ -58,6 +44,20 @@ const getFromLocal = () => {
     });
   });
   localStorage.setItem('list', JSON.stringify(myArray));
+};
+
+// Update local Storage
+const updateLocalStorage = () => {
+  const localData = JSON.parse(localStorage.getItem('list'));
+  const todos = document.querySelectorAll('span');
+  for (let i = 0; i < todos.length; i += 1) {
+    if (todos[i].classList.contains('checkToDo')) {
+      localData[i].completed = true;
+    } else {
+      localData[i].completed = false;
+    }
+  }
+  localStorage.setItem('list', JSON.stringify(localData));
 };
 
 export { getFromLocal, updateLocalStorage };
