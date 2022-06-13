@@ -3,7 +3,7 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This is a website that allows users to add/remove todayy's todo from a list. This project is build using JavaScript objects and arrays.
+> This is a website that allows users to add/remove today's todo from a list. This project is build using JavaScript objects and arrays.
 
 
 ## Built With
@@ -24,7 +24,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Live Demo
 
-Todo list
+Todo list https://basirking.github.io/To-Do-List/
 
 ## Author
 
