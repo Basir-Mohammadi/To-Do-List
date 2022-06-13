@@ -24,7 +24,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Live Demo
 
-Todo list https://basirking.github.io/To-Do-List/
+[Todo Live](https://basirking.github.io/To-Do-List/)
 
 ## Author
 
