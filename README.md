@@ -31,7 +31,7 @@ To get a local copy up and running follow these simple example steps.
 👤 **Basir Mohammadi**
 
 - GitHub: [@basirking](https://github.com/basirking)
-- LinkedIn: [Basir Mohammadi](https://www.linkedin.com/in/basirahmad1312/)
+- LinkedIn: [Basir Mohammadi](https://www.linkedin.com/in/basir-mohammadi-1296b3157/)
 
 
 
