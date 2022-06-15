@@ -87,3 +87,6 @@ const ClearAllBtn = () => {
   localStorage.setItem('list', JSON.stringify(data));
 };
 ClearBtn.addEventListener('click', ClearAllBtn);
+
+
+export {addTodo}

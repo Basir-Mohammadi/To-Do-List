@@ -63,4 +63,4 @@ const updateLocalStorage = () => {
   localStorage.setItem('list', JSON.stringify(localData));
 };
 
-export { getFromLocal, updateLocalStorage };
+module.exports = { getFromLocal, updateLocalStorage };
