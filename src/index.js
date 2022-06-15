@@ -1,6 +1,6 @@
-import { editTodo, removeTodo } from './functionalities';
-import { getFromLocal, updateLocalStorage } from './ToDoStatus';// eslint-disable-line
-import './style.css';
+import { editTodo, removeTodo } from './functionalities.js';
+import { getFromLocal, updateLocalStorage } from './ToDoStatus.js';// eslint-disable-line
+// import './style.css';
 
 // Queries to HTML
 const inputText = document.querySelector('input');
@@ -89,4 +89,4 @@ const ClearAllBtn = () => {
 ClearBtn.addEventListener('click', ClearAllBtn);
 
 
-export {addTodo}
+module.exports = addTodo;

@@ -5,7 +5,7 @@ const todoMainContainer = document.querySelector('.todos-container');
 
 // get from localstorage function
 const getFromLocal = () => {
-  const data = JSON.parse(localStorage.getItem('list'));
+  const data = JSON.parse(localStorage.getItem('list')) || [];
   data.map(i => {// eslint-disable-line
     myArray.push(i);
     const todoContainer = document.createElement('div');
@@ -63,4 +63,4 @@ const updateLocalStorage = () => {
   localStorage.setItem('list', JSON.stringify(localData));
 };
 
-module.exports = { getFromLocal, updateLocalStorage };
+export { getFromLocal, updateLocalStorage };
