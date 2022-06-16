@@ -5,7 +5,7 @@ const todoMainContainer = document.querySelector('.todos-container');
 
 // get from localstorage function
 const getFromLocal = () => {
-  const data = JSON.parse(localStorage.getItem('list'));
+  const data = JSON.parse(localStorage.getItem('list')) || [];
   data.map(i => {// eslint-disable-line
     myArray.push(i);
     const todoContainer = document.createElement('div');
@@ -16,7 +16,8 @@ const getFromLocal = () => {
       <i class='fas fa-ellipsis-v'></i>
       <i class='fas fa-trash-alt'></i>
     `;
-    todoMainContainer.appendChild(todoContainer);
+    if (todoMainContainer !== null)
+      todoMainContainer.appendChild(todoContainer);
 
     const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
     EditIcons.forEach((i) => {

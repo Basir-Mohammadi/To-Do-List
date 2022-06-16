@@ -5,10 +5,12 @@
   "main": "webpack.config.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "type": "module",
+    "test": "jest --coverage --watchAll",
     "start": "webpack serve --open",
     "build": "webpack"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/basirking/To-Do-List.git"
@@ -21,13 +23,21 @@
   },
   "homepage": "https://github.com/basirking/To-Do-List#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-jest": "^28.1.1",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-localstorage-mock": "^2.4.21",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.2"
@@ -35,7 +45,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "babel-eslint": "^8.2.6",
-    "eslint": "^4.19.1",
+    "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "g": "^2.0.1"
   }
