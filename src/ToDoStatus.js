@@ -16,7 +16,8 @@ const getFromLocal = () => {
       <i class='fas fa-ellipsis-v'></i>
       <i class='fas fa-trash-alt'></i>
     `;
-    todoMainContainer.appendChild(todoContainer);
+    if (todoMainContainer !== null)
+      todoMainContainer.appendChild(todoContainer);
 
     const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
     EditIcons.forEach((i) => {

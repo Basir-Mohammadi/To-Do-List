@@ -7,6 +7,10 @@ const inputText = document.querySelector('input');
 const todoMainContainer = document.querySelector('.todos-container');
 const ClearBtn = document.querySelector('button');
 
+
+console.log(document.documentElement.outerHTML);
+
+
 // class object
 class MyObjects {
   constructor(description, completed, index) {
@@ -29,7 +33,9 @@ const addTodo = (todoValue) => {
     <i class='fas fa-ellipsis-v'></i>
     <i class='fas fa-trash-alt'></i>
   `;
-  todoMainContainer.appendChild(todoContainer);
+  if (todoMainContainer !== null)
+    todoMainContainer.appendChild(todoContainer);
+
   const checkbox = document.querySelectorAll('.checkbox');
   checkbox.forEach((i) => {
     i.addEventListener('click', () => {
@@ -42,7 +48,7 @@ const addTodo = (todoValue) => {
   });
 
   // Objects
-  const object = new MyObjects(todoValue, false, checkbox.length - 1);
+  const object = new MyObjects(todoValue, false, checkbox.length - 1 );
   myArray.push(object);
   localStorage.setItem('list', JSON.stringify(myArray));
 
@@ -62,13 +68,16 @@ const addTodo = (todoValue) => {
   });
 };
 
-inputText.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && inputText.value) {
-    // e.preventDefault();
-    addTodo(inputText.value);
-    inputText.value = null;
-  }
-});
+if (inputText !== null){
+  inputText.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && inputText.value) {
+      // e.preventDefault();
+      addTodo(inputText.value);
+      inputText.value = null;
+    }
+  });
+}
+
 
 getFromLocal();
 
@@ -86,7 +95,10 @@ const ClearAllBtn = () => {
   data.map(i.index = count += 1); // eslint-disable-line
   localStorage.setItem('list', JSON.stringify(data));
 };
-ClearBtn.addEventListener('click', ClearAllBtn);
+
+if (ClearBtn !== null){
+  ClearBtn.addEventListener('click', ClearAllBtn);
+}
 
 
 module.exports = addTodo;

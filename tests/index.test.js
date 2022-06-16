@@ -3,6 +3,7 @@
  */
 
 
+
 document.body.innerHTML =`
 <section class="todo-container">
 <div class="header">
@@ -17,11 +18,21 @@ document.body.innerHTML =`
   </div>
   <button type="button">Clear all completed</button>
 </form>
-</section>`
+</section>`;
 
-const addTodo = require ('../src/index');
+
+import addTodo from '../src/index';
+import { getFromLocal, updateLocalStorage } from '../src/ToDoStatus.js';
+
+
 describe("Adding an item", ()=> {
   test('checked argument to addTodo item matches description in localstorage', ()=> {
-    
+    addTodo('item1');
+
+    expect(JSON.parse(localStorage.getItem('list'))).toEqual([ 
+      { description: 'item1', completed: false, index: -1 },
+    ]);
+
+    expect(document.querySelector('.todos-container').childNodes.length).toBe(1);
   });
 });
